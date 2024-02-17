@@ -57,6 +57,11 @@ public class SimplifiedTweet {
       String language = jo.get("lang").getAsString();
       long timestampMs = jo.get("timestamp_ms").getAsLong();
 
+
+      if (tweetId == 0 || text == null || userId == 0 || userName == null || language == null ||timestampMs == 0){
+        return Optional.empty(); // discarding the tweet if any of the mandatory parameters is not present 
+      }
+
       return Optional.of(new SimplifiedTweet(tweetId, text, userId, userName, language, timestampMs));
     }
     catch(Exception e){

@@ -22,7 +22,7 @@ public class S3Uploader implements Uploader {
     public S3Uploader(String bucket, String prefix){
         this.BucketName = bucket;
         this.Prefix = prefix;
-        this.Client = AmazonS3ClientBuilder.standard()
+        this.Client = AmazonS3ClientBuilder.standard()      // getting the default client
                 .withCredentials(new DefaultAWSCredentialsProviderChain())
                 .build();
     }

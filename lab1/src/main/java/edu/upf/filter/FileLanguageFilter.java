@@ -12,20 +12,20 @@ public class FileLanguageFilter implements LanguageFilter {
     //Variables
     final String inputFile;
     final String outputFile;
-
+    public int counter;
 
 
     //Constructor
     public FileLanguageFilter(String inputFilePath, String outputFilePath) {
         this.inputFile = inputFilePath;
         this.outputFile = outputFilePath;
+        this.counter = 0;
 
     }
 
     //Override Language Filter Class
     public void filterLanguage(String language) throws Exception {
         try {
-
             //Open the input and output files
             FileReader reader = new FileReader(inputFile);
             BufferedReader bReader = new BufferedReader(reader);
@@ -46,6 +46,8 @@ public class FileLanguageFilter implements LanguageFilter {
                     if (tweet.getLanguage().equals(language)) {
                         bWriter.write(line);
                         bWriter.newLine();
+                        counter++;
+
                     }
                 }
                 line = bReader.readLine();
